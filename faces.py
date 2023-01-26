@@ -85,18 +85,22 @@ class Net():
             self.model.summary()
             return ""
 
+        # Allows you to use net.save() instead of net.model.save()
+        def save(self, filename):
+            self.model.save(filename)
+
 net = Net((600, 600, 3))
 
 net.model.fit(
     train,
     batch_size = 32,    # Bigger than class size so you more likely grab all classes
-    epochs = 10,
+    epochs = 40,
     verbose = 2,
     validation_data = test,
     validation_batch_size = 32,
 )
 
-net.model.save('faces_model_save')
+net.model.save('my_awesome_model_1')
 
 
 
